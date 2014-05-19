@@ -1,0 +1,24 @@
+.row
+
+  h1.page-header Photos
+  =link_to "Add a new photo", new_photo_path, class: "btn btn-primary"
+  table.table
+    thead
+      tr
+        th #
+        th Image
+        th Title
+        th Description
+        th Actions
+    tbody
+      - @photos.each do |photo|
+        tr
+          td = photo.id
+          td
+            = image_tag(photo.attachment.url(:thumb), style:"height:100px")
+          td = photo.title
+          td = photo.description
+          td
+            =link_to photo_path(photo), data: { confirm: "Photo will be deleted. Are you sure?"}, method: :delete, class: "btn btn-default btn-red", title: "Delete photo"
+              | Delete photo
+

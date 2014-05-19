@@ -1,0 +1,27 @@
+.row
+
+  h1.page-header Add new photo
+
+  =form_for @photo, html: { multipart: true } do |f|
+    - if @photo.errors.any?
+      .alert.alert-danger.alert-dismissable
+        button aria-hidden="true" data-dismiss="alert" class="close" type="button" ×
+        ul
+          - @photo.errors.full_messages.each do |msg|
+            li = msg
+    .form-group
+      button type="button" class="btn btn-default js-choose-photo-attachment-button"
+        i.fa.fa-paperclip
+        span  Choose File...
+      | &nbsp;
+      span.file_name.js-attachment-filename  File name...
+      = f.file_field :attachment, class: "js-photo-attachment-input hidden"
+      .light The maximum file size allowed is 2MB.
+    .form-group
+      = f.label :title
+      = f.text_field :title, :autofocus => true, 'placeholder' => "Enter photo title", class: "form-control"
+    .form-group
+      = f.label :description
+      = f.text_area :description, rows: "6", 'placeholder' => "Describe a little more this photo.", class: "form-control"
+
+    button.btn.btn-primary.pull-right type="submit" Submit

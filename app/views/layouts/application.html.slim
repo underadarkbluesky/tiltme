@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+  title Tilt Me
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  body
+    nav.navbar.navbar-default role="navigation"
+      .container-fluid
+        .navbar-header
+          button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "Tilt Me", :root, class: "navbar-brand"
+
+        #top-nav.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              = link_to "Photos", :photos
+    .container
+      = yield

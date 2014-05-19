@@ -1,0 +1,9 @@
+-if @photo
+  canvas#gifAnimation data-url=(URI.join(request.url, @photo.attachment.url(:exploded))) data-imgHeight=(@photo.attachment.height) data-totalHeight=(@photo.attachment.height(:exploded)) data-imgWidth=(@photo.attachment.width)
+-else
+  .row
+    .jumbotron
+      h1 No image
+      p You should upload new images.
+      p
+        =link_to "Add a new photo", new_photo_path, class: "btn btn-primary"
